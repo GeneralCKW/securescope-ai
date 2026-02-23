@@ -26,4 +26,4 @@ def calculate_risk_score(assessment):
         if response.answer is False:
             total_risk += response.question.risk_weight 
         
-    return total_score, level
+    return total_risk
