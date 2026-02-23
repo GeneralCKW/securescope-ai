@@ -8,7 +8,7 @@ import uuid
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
-@router.post("/", resonse_model=UserResponse)
+@router.post("/", response_model=UserResponse)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db_user = User(
         id=uuid.uuid4(),
@@ -20,6 +20,6 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db.refresh(db_user)
     return db_user
 
-@router.get("/", response_model=list(UserResponse))
+@router.get("/", response_model=list[UserResponse])
 def get_users(db: Session = Depends(get_db)):
     return db.query(User).all()

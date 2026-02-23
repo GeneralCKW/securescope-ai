@@ -20,5 +20,10 @@ def calculate_risk(responses):
         level = "High"
     else:
         level = "Critical"
+def calculate_risk_score(assessment):
+    total_risk = 0
+    for response in assessment.repsonses:
+        if response.answer is False:
+            total_risk += response.question.risk_weight 
         
     return total_score, level
