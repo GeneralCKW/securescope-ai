@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from app.routes import auth, assessments, simulation # Example routes
 from app.database import engine, Base
 from app.models import user, organization, assessment, question, response, vulnerability, attack_path, attack_step # Import all your models
-from app.routers import users, organizations # Import Routers
+from app.routers import users, organizations, assessments # Import Routers
 
 # Create tables
 Base.metadata.create_all(bind=engine)
