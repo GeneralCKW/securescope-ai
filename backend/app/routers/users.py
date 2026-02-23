@@ -8,7 +8,7 @@ import uuid
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
-@router.pose("/", resonse_model=UserResponse)
+@router.post("/", resonse_model=UserResponse)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db_user = User(
         id=uuid.uuid4(),

@@ -23,4 +23,4 @@ def create_org(org: OrganizationCreate, db: Session = Depends(get_db)):
 
 @router.get("/", response_model=list[OrganizationResponse])
 def get_orgs(db: Session = Depends(get_db)):
-    return db.query(Orgnization).all()
+    return db.query(Organization).all()
