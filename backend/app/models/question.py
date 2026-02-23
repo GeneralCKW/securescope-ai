@@ -4,7 +4,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from app.database import Base
 
 class Question(Base):
-    __tablename_ = "questions"
+    __tablename__ = "questions"
     
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     category = Column(String) # e.g., "auth", "network", "compliance"
