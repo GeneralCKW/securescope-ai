@@ -8,6 +8,6 @@ class User(Base):
     
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     email = Column(String, unique=True, nullable=False)
-    pasword_hash = Column(string, nullable=False)
+    pasword_hash = Column(String, nullable=False)
     role = Column(String, default="analyst")
     
