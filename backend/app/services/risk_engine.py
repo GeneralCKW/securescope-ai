@@ -1,3 +1,10 @@
+"""
+Risk scoring engine.
+
+This module calculates the cybersecurity risk score
+for an assessment bsed on responses to security controls.
+"""
+
 def calculate_risk(responses):
     total_score = 0
     critical_flags = []
@@ -21,6 +28,20 @@ def calculate_risk(responses):
     else:
         level = "Critical"
 def calculate_risk_score(assessment):
+    """
+    Calculate total risk score for an assessment.
+    
+    The risk score is determined by summing the risk weights
+    of all questions where the corresponding response indicates
+    that the security control is not implemented.
+    
+    Args:
+        assessment(Assessment): The assessment containing responses
+        
+    Returns:
+        int: Total calculated risk score
+    """
+    
     total_risk = 0
     for response in assessment.repsonses:
         if response.answer is False:

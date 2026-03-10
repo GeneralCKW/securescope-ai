@@ -13,7 +13,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db_user = User(
         id=uuid.uuid4(),
         email=user.email,
-        password_hash=user.password, # In production, hash the password before storing
+        password_hash=user.password,
     )
     db.add(db_user)
     db.commit()

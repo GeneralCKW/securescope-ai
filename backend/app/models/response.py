@@ -10,7 +10,7 @@ class Response(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     assessment_id = Column(UUID(as_uuid=True), ForeignKey("assessments.id"))
     question_id = Column(UUID(as_uuid=True), ForeignKey("questions.id"))
-    answer = Column(Boolean) # e.g., 1-5 scale
+    answer = Column(Boolean) 
     calculated_risk_value = Column(Float)
     
     assessment = relationship("Assessment", back_populates="responses")
