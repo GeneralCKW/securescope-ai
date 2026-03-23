@@ -8,10 +8,15 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from app.config import DATABASE_URL
+from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
 DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("Database_URL is not set in your .env file")
 
 """ 
 SQLAlchemy engine used to connect to the PostgreSQL database.
