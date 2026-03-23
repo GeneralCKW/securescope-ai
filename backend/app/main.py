@@ -13,7 +13,7 @@ from fastapi import FastAPI
 from app.routes import auth, assessments, simulation 
 from app.database import engine, Base
 from app.models import user, organization, assessment, question, response, vulnerability, attack_path, attack_step
-from app.routers import users, organizations, assessments 
+from app.routers import users, organizations, assessments, auth
 
 """
     Initializes database tables. 
@@ -28,7 +28,7 @@ app = FastAPI(title="SecureScope AI")
 
 app.include_router(users.router)
 app.include_router(organizations.router)
-
+app.include_router(auth.router)
 
 @app.get("/")
 def read_root():
