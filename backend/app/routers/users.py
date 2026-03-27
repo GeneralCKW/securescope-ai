@@ -12,12 +12,14 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 @router.post("/", response_model=UserResponse)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    if len(user.password) > 72:
+        raise HTTPException(status_code=400, detail="Password must be 72 characters or fewer")
     existing = db.query(User).filter(User.email == user.email).first()
     if existing:
         raise HTTPException(status_code=400, detail="Email already registered")
     
     db_user = User(
-        id-uuid.uuid4(),
+        id=uuid.uuid4(),
         email=user.email,
         password_hash=pwd_context.hash(user.password),
     )
